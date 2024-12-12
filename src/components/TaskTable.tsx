@@ -35,32 +35,77 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, onDeleteTask, onUpdateTask
     {
       title: 'Task Title',
       dataIndex: 'title',
+      key: 'title',
+      render: (text: string) => (
+        <span style={{ fontWeight: '600', color: '#333' }}>{text}</span>
+      ),
     },
     {
       title: 'Priority',
       dataIndex: 'priority',
+      key: 'priority',
+      render: (text: string) => (
+        <span style={{ color: text === 'High' ? '#e74c3c' : text === 'Medium' ? '#f39c12' : '#2ecc71' }}>
+          {text}
+        </span>
+      ),
     },
     {
       title: 'Due Date',
       dataIndex: 'dueDate',
+      key: 'dueDate',
+      render: (text: string) => (
+        <span style={{ color: '#555' }}>{new Date(text).toLocaleDateString()}</span>
+      ),
     },
     {
       title: 'Status',
       render: (text: string, record: Task) => (
-        <Switch checked={record.status} onChange={(checked) => handleStatusChange(record.id, checked)} />
+        <Switch
+          checked={record.status}
+          onChange={(checked) => handleStatusChange(record.id, checked)}
+          style={{
+            backgroundColor: record.status ? '#4caf50' : '#f44336',
+            borderColor: record.status ? '#4caf50' : '#f44336',
+          }}
+        />
       ),
     },
     {
       title: 'Actions',
       render: (_: any, record: Task) => (
         <Popconfirm title="Are you sure?" onConfirm={() => handleDelete(record.id)}>
-          <Button danger>Delete</Button>
+          <Button
+            danger
+            style={{
+              backgroundColor: '#e74c3c',
+              borderColor: '#e74c3c',
+              color: '#fff',
+              padding: '6px 12px',
+              fontSize: '14px',
+            }}
+          >
+            Delete
+          </Button>
         </Popconfirm>
       ),
     },
   ];
 
-  return <Table columns={columns} dataSource={tasks} rowKey="id" pagination={{ pageSize: 5 }} />;
+  return (
+    <Table
+      columns={columns}
+      dataSource={tasks}
+      rowKey="id"
+      pagination={{ pageSize: 5 }}
+      style={{
+        backgroundColor: '#fff',
+        borderRadius: '8px',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        marginTop: '20px',
+      }}
+    />
+  );
 };
 
 export default TaskTable;

@@ -57,27 +57,33 @@ const TaskList: React.FC = () => {
           textAlign: 'center',
           color: '#333',
           marginBottom: '20px',
+          fontSize: '24px',
+          fontWeight: '600',
         }}
       >
         Task Management
       </h1>
+
       <div
         style={{
           marginBottom: '20px',
-          padding: '10px',
+          padding: '20px',
           border: '1px solid #e6e6e6',
           borderRadius: '8px',
-          backgroundColor: '#ffffff',
+          backgroundColor: '#fff',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         }}
       >
         <TaskForm onAddTask={handleAddTask} />
       </div>
+
       <div
         style={{
-          padding: '10px',
+          padding: '20px',
           border: '1px solid #e6e6e6',
           borderRadius: '8px',
-          backgroundColor: '#ffffff',
+          backgroundColor: '#fff',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         }}
       >
         <TaskTable
