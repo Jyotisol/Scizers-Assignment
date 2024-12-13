@@ -10,6 +10,8 @@ export const getTasks = async (): Promise<Task[]> => {
 };
 
 export const addTask = async (task: Omit<Task, 'id'>): Promise<Task> => {
+  console.log(task);
+  
   const response = await axios.post(`${API_URL}/todos`, task);
   return response.data;
 };

@@ -11,6 +11,7 @@ interface TaskTableProps {
 }
 
 const TaskTable: React.FC<TaskTableProps> = ({ tasks, onDeleteTask, onUpdateTask }) => {
+  console.log(tasks)
   const handleDelete = async (id: number) => {
     try {
       await deleteTask(id);

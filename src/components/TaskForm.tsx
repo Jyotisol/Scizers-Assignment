@@ -19,10 +19,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
     const newTask: Task = {
       title: values.title,
       priority: values.priority,
-      dueDate: values.dueDate ? values.dueDate.format('YYYY_MM_DD') : '',
+      dueDate: values.dueDate ? values.dueDate.format('YYYY-MM-DD') : '',
+      // dueDate: values.dueDate ? values.dueDate: '',
       status: values.status,
       id: 0
     };
+    console.log(newTask)
     onAddTask(newTask);
     notification.success({ message: 'Task added successfully' });
     form.resetFields();
